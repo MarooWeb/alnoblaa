@@ -1,0 +1,20 @@
+/* حركة الموقع: تناسب الهاتف والكمبيوتر */
+.rv{opacity:0;transform:translateY(40px);filter:blur(3px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1),filter .9s ease}
+.rv.in{opacity:1;transform:none;filter:none}
+.rv:nth-child(even).in{transition-delay:.08s}
+@media (max-width:700px){.rv{transform:translateY(22px);filter:none;transition-duration:.6s}}
+/* الكمبيوتر: تفاعل مع مؤشر الفأرة */
+@media (hover:hover) and (pointer:fine){
+ .card{transition:transform .4s cubic-bezier(.2,.7,.2,1),box-shadow .4s,border-color .4s}
+ .card:hover{transform:translateY(-6px)}
+ .links a{position:relative}
+ .links a::after{content:"";position:absolute;inset-inline:14px;bottom:3px;height:2px;border-radius:2px;background:var(--gold2);transform:scaleX(0);transition:transform .35s ease}
+ .links a:hover::after{transform:scaleX(1)}
+ .step:hover{transform:translateY(-4px)}
+}
+/* الهاتف: رد فعل عند اللمس */
+@media (hover:none),(pointer:coarse){
+ .card:active,.btn:active,.step:active{transform:scale(.97);transition:transform .15s}
+ .btn{-webkit-tap-highlight-color:transparent}
+}
+@media (prefers-reduced-motion:reduce){.rv{transition:none;filter:none;transform:none;opacity:1}}
